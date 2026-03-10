@@ -1,0 +1,23 @@
+name: npm test
+on: 
+  workflow_dispatch:
+               
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v6
+        with:
+          ref: "main"
+      - uses: actions/setup-node@v6
+        with:
+            node-version: lts/*
+      - run: npm install
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: "main"
+      - run: npm test
+      
