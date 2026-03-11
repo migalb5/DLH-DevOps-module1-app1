@@ -6,7 +6,7 @@ on:
         description: "Please input Node.js version to be used: "
         required: false
         type: string
-        value: "lts/*"
+        default: "lts/*"
 jobs:
   run-npm-test:
     runs-on: ubuntu-latest
@@ -16,9 +16,12 @@ jobs:
         - name : setup node
           uses: actions/setup-node@v6
           with:
-            node-version: ${{input.node-version}}
+            node-version: ${{ input.node-version }}
         - name: run test
           shell: bash
           run: |
-            npm install
             node -v
+            npm install
+            # npm test
+
+
