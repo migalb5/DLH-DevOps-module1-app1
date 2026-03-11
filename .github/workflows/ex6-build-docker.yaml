@@ -1,0 +1,30 @@
+name: build docker
+on: 
+  pull_request:
+  push:
+    branches: 
+      - main
+
+jobs:
+  run-npm-install:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v6
+        - name : setup node
+          uses: actions/setup-node@v6
+          with:
+            node-version: 'lts/*'
+        - name: run install
+          shell: bash
+          run: |
+            npm install
+            node -v
+
+  build-dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker build -t ${{ github.sha }} .
+
+
+      
