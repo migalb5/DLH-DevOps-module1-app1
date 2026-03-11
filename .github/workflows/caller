@@ -1,0 +1,9 @@
+on:
+  workflow_dispatch
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/ex4.yaml
+    with:
+      node-version: 19
+  
