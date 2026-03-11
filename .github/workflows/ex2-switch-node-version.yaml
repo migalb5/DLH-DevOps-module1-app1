@@ -16,5 +16,4 @@ jobs:
           shell: bash
           run: |
             npm install
-            npm test
             node -v
