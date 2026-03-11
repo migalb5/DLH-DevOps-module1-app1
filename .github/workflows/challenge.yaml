@@ -1,0 +1,19 @@
+name: build docker
+on: 
+  pull_request:
+  push:
+    branches: 
+      - main
+
+jobs:
+  front:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: docker build -t ${{ github.sha }} ./front/Dockerfile
+    
+  back:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: docker build -t ${{ github.sha }} ./back/Dockerfile
