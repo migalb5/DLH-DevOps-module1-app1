@@ -6,7 +6,7 @@ jobs:
   run-npm-install:
     strategy:
       matrix:
-        node-version: [18, 20, lts]
+        node-version: [18, 20, lts/*]
         runner-os: [ubuntu-latest, ubuntu-22.04]
         exclude:
         - node-version: 18
