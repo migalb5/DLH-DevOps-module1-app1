@@ -18,9 +18,11 @@ jobs:
             cache-name: cache-node-modules
           with:
             path: ./node_modules
-            key: 
-            restore-keys: 
-        
+            key: ${{ runner.os }}-node-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-${{ env.cache-name }}-
+              ${{ runner.os }}-node-
+              ${{ runner.os }}-
         - name: run install
           shell: bash
           run: |
